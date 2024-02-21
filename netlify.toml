@@ -1,0 +1,5 @@
+[bluid]
+    functions = "functions"
+
+[dev]
+    publish = "public"

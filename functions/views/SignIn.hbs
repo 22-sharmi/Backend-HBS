@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="signin-container">
+    <div class="signin-form-container">
+        <h2 class="signin-heading">Sign In</h2>
+        <form action="/what" method="POST" class="signin-form">
+            <input type="text" name="name" placeholder="Enter Your Name" class="signin-input">
+            <div class="password-container">
+                <input 
+                    type="{{#if showPassword}}text{{else}}password{{/if}}" 
+                    name="password" 
+                    placeholder="Enter Your Password" 
+                    class="signin-input" 
+                >
+                <!-- Button to toggle password visibility -->
+                <button 
+                    type="button" 
+                    class="toggle-password-button"
+                    onclick="togglePasswordVisibility()"
+                >
+                    {{#if showPassword}}Hide{{else}}Show{{/if}}
+                </button>
+            </div>
+            <button type="submit" class="signin-button">Log In</button>
+        </form>
+        <p>Need an Account? <a href='/SignUp' class='signin-link'>Sign Up</a></p>
+    </div>
+</div>
+
+<script>
+    function togglePasswordVisibility() {
+        var passwordInput = document.querySelector("input[name='password']");
+        var passwordButton = document.querySelector(".toggle-password-button");
+
+        if (passwordInput.type === "password") {
+            passwordInput.type = "text";
+            passwordButton.textContent = "Hide";
+        } else {
+            passwordInput.type = "password";
+            passwordButton.textContent = "Show";
+        }
+    }
+</script>
+
+</body>
+</html>
+<style>
+    /* SignIn.css */
+
+.signin-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signin-form-container {
+    width: 300px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+
+.signin-heading {
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 24px;
+    color: #333;
+}
+
+.signin-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-input {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    width: calc(100% - 20px);
+}
+
+.password-container {
+    position: relative;
+}
+
+.toggle-password-button {
+    position: absolute;
+    top: 35%;
+    right:35px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    width: 0;
+}
+.toggle-password-button:hover{
+    background-color:transparent;
+}
+.signin-button {
+    width: calc(100% - 10px);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signin-button:hover {
+    background-color: #6c0fc4;
+}
+
+.signin-error {
+    margin-top: 15px;
+    color: red;
+}
+
+.signin-link {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.signin-link:hover {
+    text-decoration: underline;
+}
+
+</style>
